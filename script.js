@@ -1,7 +1,7 @@
 const localVideo = document.getElementById('localVideo');
 const remoteVideo = document.getElementById('remoteVideo');
 const startButton = document.getElementById('startButton');
-const socket = new WebSocket('wss://your-render-url.com');  // Use WSS for secure WebSocket connection
+const socket = new WebSocket('ws://localhost:3000');  // WebSocket connection to server
 const configuration = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 
 let peerConnection;
