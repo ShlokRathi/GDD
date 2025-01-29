@@ -1,19 +1,19 @@
 const WebSocket = require('ws');
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;  // Using dynamic port for Render
 
 // WebSocket server setup
-const server = new WebSocket.Server({ port: PORT });
+const server = new WebSocket.Server({ server: app });  // WebSocket tied to the Express server
 const clients = new Map(); // Map to track clients and their IDs
 
 // Serve static files (optional, if you want to serve a frontend)
 app.use(express.static('public'));
 app.use(express.json()); // For parsing application/json
 
-// Start Express server
-app.listen(3001, () => {
-    console.log('Express server is running on http://localhost:3001');
+// Start Express server (on Render, will use dynamic PORT)
+app.listen(PORT, () => {
+    console.log(`Express server is running on https://localhost:${PORT}`);
 });
 
 // WebSocket events for signaling and client management
@@ -71,4 +71,4 @@ function broadcast(data, excludeSocket = null) {
     });
 }
 
-console.log(`WebSocket server is running on ws://localhost:${PORT}`);
+console.log(`WebSocket server is running on wss://localhost:${PORT}`);
