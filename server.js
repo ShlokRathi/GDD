@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 });
 
 // Start Express server
-app.listen(HTTP_PORT, () => {
-    console.log(`Express server is running on http://localhost:${HTTP_PORT}`);
+app.listen(3001, () => {
+    console.log(`Express server is running on http://localhost:3001`);
 });
 
 // WebSocket events for signaling and client management
